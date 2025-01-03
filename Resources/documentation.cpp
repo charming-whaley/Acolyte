@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../Header files/information.h"
+#include "../Header files/documentation.h"
 
 void printDocumentation() {
     const std::string RESET_COLOR = "\033[0m";
