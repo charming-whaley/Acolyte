@@ -21,4 +21,6 @@ By running that command, you get this window
 
 ![previewImage](https://github.com/user-attachments/assets/049908a0-35a4-4736-baa6-521580681929)
 
-Since you've run it, you can now use Acolyte to meet your needs! Enjoy it!
+## Final steps
+
+Since you've run it, you can now use Acolyte to meet your needs! Enjoy it! 🚀
