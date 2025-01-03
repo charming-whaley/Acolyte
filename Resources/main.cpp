@@ -3,6 +3,7 @@
 #include <vector>
 #include "documentation.cpp"
 #include "tools.cpp"
+#include "directory_editing.cpp"
 
 int main(int argc, const char * argv[]) {
     const std::string RESET_COLOR = "\033[0m";
@@ -20,18 +21,30 @@ int main(int argc, const char * argv[]) {
         std::cout << "> ";
         std::getline(std::cin, userInput);
         commandStack.push_back(userInput);
-        
-        if (userInput == "help()" or userInput == "help")
+
+        if (userInput == "help") {
             printDocumentation();
-        else if (userInput == "clear()" or userInput == "clear")
+        } else if (userInput == "clear") {
             clearScreen();
-        else if (userInput == "version()" or userInput == "version")
+        } else if (userInput == "version") {
             printVersion();
-        else if (userInput == "history()" or userInput == "history")
+        } else if (userInput == "history") {
             showCommandsHistory(commandStack);
-        else
+        } else if (userInput == "path")  {
+            showCurrentWorkingDirectory();
+        } else if (userInput[0] == 'g' && userInput[1] == 'o') {
+            std::string path;
+            for (int i = 3; userInput[i] != '\0'; ++i)
+                path.push_back(userInput[i]);
+            goTo(path);
+        } else if (userInput == "list") {
+            showAllFilesAndFoldersInPath();
+        } else {
             if (userInput != "exit()" and userInput != "exit")
                 std::cout << RED << "Error" << RESET_COLOR << ": no such command " << userInput << std::endl;
+        }
+
+
     }
     
     return 0;
