@@ -7,7 +7,7 @@ Acolyte is the lightweight terminal file manager. Written in C++, it provides be
 Just download .zip archive from GitHup and run ./filemanager in terminal:
 
 ```
-./filemanager
+./acolyte
 ```
 
 ## Usage
