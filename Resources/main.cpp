@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "documentation.cpp"
 #include "tools.cpp"
 #include "directory_editing.cpp"
+#include "file_functionality.cpp"
+#include "documentation.cpp"
 
 int main(int argc, const char * argv[]) {
     const std::string RESET_COLOR = "\033[0m";
@@ -49,6 +50,26 @@ int main(int argc, const char * argv[]) {
             for (int i = 7; userInput[i] != '\0'; ++i)
                 filename.push_back(userInput[i]);
             removeFileFromCurrentDirectory(filename);
+        } else if (userInput[0] == 'e' && userInput[1] == 'c' && userInput[2] == 'h' && userInput[3] == 'o') {
+            std::string message;
+            for (int i = 5; userInput[i] != '\0'; ++i)
+                message.push_back(userInput[i]);
+            echoMessageInTerminal(message);
+        } else if (userInput[0] == 'o' && userInput[0] == 'o' && userInput[0] == 'o' && userInput[0] == 'o') {
+            std::string path;
+            for (int i = 5; userInput[i] != '\0'; ++i)
+                path.push_back(userInput[i]);
+            openSpecifiedDirectoryInFinder(path);
+        } else if (userInput[0] == 'v' && userInput[1] == 'i' && userInput[2] == 'm') {
+            std::string path;
+            for (int i = 4; userInput[i] != '\0'; ++i)
+                path.push_back(userInput[i]);
+            openSpecifiedFileInVim(path);
+        } else if (userInput[0] == 'p' && userInput[1] == 'y' && userInput[2] == 't' && userInput[3] == 'h' && userInput[4] == 'o' && userInput[5] == 'n') {
+            std::string path;
+            for (int i = 7; userInput[i] != '\0'; ++i)
+                path.push_back(userInput[i]);
+            openSpecifiedFileInPython(path);
         } else
             if (userInput != "exit()" and userInput != "exit")
                 std::cout << RED << "Error" << RESET_COLOR << ": no such command " << userInput << std::endl;

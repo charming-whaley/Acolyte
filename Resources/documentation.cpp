@@ -28,6 +28,7 @@ void displayAcolyteDocumentation() {
     std::cout << "| - path                           -- display current working directory            |" << std::endl;
     std::cout << "| - list                           -- display files/folders in current directory   |" << std::endl;
     std::cout << "| - version                        -- display current version                      |" << std::endl;
+    std::cout << "| - echo [message]                 -- display your message                         |" << std::endl;
     std::cout << "| - go [directory]                 -- go to directory                              |" << std::endl;
     std::cout << "| - make [filename.extension]      -- create file                                  |" << std::endl;
     std::cout << "| - remove [filename]              -- remove file/folder                           |" << std::endl;

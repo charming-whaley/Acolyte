@@ -17,6 +17,10 @@ void showCommandsHistory(std::vector<std::string> commandsStack) {
         std::cout << command << "\n";
 }
 
+void echoMessageInTerminal(std::string message) {
+    std::cout << message << std::endl;
+}
+
 void displayAcolyteLogo() {
     const std::string RESET_COLOR = "\033[0m";
     const std::string RED = "\033[31m";
