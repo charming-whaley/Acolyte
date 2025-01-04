@@ -1,26 +1,21 @@
 ## Acolyte
 
-<p>Acolyte is the lightweight macOS terminal utility that helps with file management. Written in C++, it operates swiftly and provides full access to all your files directly through the terminal window</p>
+Acolyte is the lightweight terminal file manager. Written in C++, it provides best responsibility when managing files from terminal
 
 ## Installation
 
-<p>To get started, you need to download Acolyte from Homebrew using the following command:</p>
+Just download .zip archive from GitHup and run ./filemanager in terminal:
 
 ```
-brew install acolyte
+./filemanager
 ```
+
 ## Usage
 
-<p>Just run Acolyte in your terminal using this command: </p>
+For better performance, run help in Acolyte terminal to get Acolyte docs:
 
 ```
-./acolyte
+> help
 ```
 
-By running that command, you get this window
-
-![previewImage](https://github.com/user-attachments/assets/049908a0-35a4-4736-baa6-521580681929)
-
-## Final steps
-
-Since you've run it, you can now use Acolyte to meet your needs! Enjoy it! 🚀
+![Screenshot 2025-01-04 at 5 46 26 PM](https://github.com/user-attachments/assets/e865ee15-adfe-4b5f-9adb-be4a4fe4e0ef)
