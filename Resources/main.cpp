@@ -14,7 +14,7 @@ int main(int argc, const char * argv[]) {
     
     std::vector<std::string> commandStack;
     
-    printAcolyteLogo();
+    displayAcolyteLogo();
     
     std::string userInput;
     while (userInput != "exit()" and userInput != "exit") {
@@ -22,29 +22,36 @@ int main(int argc, const char * argv[]) {
         std::getline(std::cin, userInput);
         commandStack.push_back(userInput);
 
-        if (userInput == "help") {
-            printDocumentation();
-        } else if (userInput == "clear") {
-            clearScreen();
-        } else if (userInput == "version") {
-            printVersion();
-        } else if (userInput == "history") {
+        if (userInput == "help")
+            displayAcolyteDocumentation();
+        else if (userInput == "clear")
+            clearCurrentSession();
+        else if (userInput == "version")
+            displayCurrentAcolyteVersion();
+        else if (userInput == "history")
             showCommandsHistory(commandStack);
-        } else if (userInput == "path")  {
+        else if (userInput == "path")
             showCurrentWorkingDirectory();
-        } else if (userInput[0] == 'g' && userInput[1] == 'o') {
+        else if (userInput == "list")
+            showAllFilesAndFoldersInPath();
+        else if (userInput[0] == 'g' && userInput[1] == 'o') {
             std::string path;
             for (int i = 3; userInput[i] != '\0'; ++i)
                 path.push_back(userInput[i]);
-            goTo(path);
-        } else if (userInput == "list") {
-            showAllFilesAndFoldersInPath();
-        } else {
+            goToSpecifiedPath(path);
+        } else if (userInput[0] == 'm' && userInput[1] == 'a' && userInput[2] == 'k' && userInput[3] == 'e') {
+            std::string filename;
+            for (int i = 5; userInput[i] != '\0'; ++i)
+                filename.push_back(userInput[i]);
+            makeFileInTheCurrentDirectory(filename);
+        } else if (userInput[0] == 'r' && userInput[1] == 'e' && userInput[2] == 'm' && userInput[3] == 'o' && userInput[4] == 'v' && userInput[5] == 'e') {
+            std::string filename;
+            for (int i = 7; userInput[i] != '\0'; ++i)
+                filename.push_back(userInput[i]);
+            removeFileFromCurrentDirectory(filename);
+        } else
             if (userInput != "exit()" and userInput != "exit")
                 std::cout << RED << "Error" << RESET_COLOR << ": no such command " << userInput << std::endl;
-        }
-
-
     }
     
     return 0;

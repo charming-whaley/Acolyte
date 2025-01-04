@@ -4,11 +4,11 @@
 #include <string>
 #include "../Header files/tools.h"
 
-void clearScreen() {
+void clearCurrentSession() {
     system("clear");
 }
 
-void printVersion() {
+void displayCurrentAcolyteVersion() {
     std::cout << "alpha v1.0.0" << std::endl;
 }
 
@@ -17,7 +17,7 @@ void showCommandsHistory(std::vector<std::string> commandsStack) {
         std::cout << command << "\n";
 }
 
-void printAcolyteLogo() {
+void displayAcolyteLogo() {
     const std::string RESET_COLOR = "\033[0m";
     const std::string RED = "\033[31m";
     const std::string GREEN = "\033[32m";

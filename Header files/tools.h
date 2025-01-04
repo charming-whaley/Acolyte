@@ -1,9 +1,9 @@
 #ifndef tools_h
 #define tools_h
 
-void printAcolyteLogo();
-void printVersion();
-void clearScreen();
+void displayAcolyteLogo();
+void displayCurrentAcolyteVersion();
+void clearCurrentSession();
 void showCommandsHistory(std::vector<std::string> commandsStack);
 
 #endif

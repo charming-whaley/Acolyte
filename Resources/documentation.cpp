@@ -1,7 +1,7 @@
 #include <iostream>
 #include "../Header files/documentation.h"
 
-void printDocumentation() {
+void displayAcolyteDocumentation() {
     const std::string RESET_COLOR = "\033[0m";
     const std::string RED = "\033[31m";
     const std::string GREEN = "\033[32m";
@@ -15,20 +15,22 @@ void printDocumentation() {
     std::cout << "  " << RED << "|||  |||" << GREEN << "  |||       " << YELLOW << "  |||     |||" << BLUE << "  |||     " << YELLOW << "     |||||   " << GREEN << "      |||    " << RED << "  |||||   " << RESET_COLOR << std::endl;
     std::cout << "  " << RED << "||||||||" << GREEN << "   ||||  |||" << YELLOW << "   |||   ||| " << BLUE << "  |||     " << YELLOW << "     |||     " << GREEN << "      |||    " << RED << "  |||     " << RESET_COLOR << std::endl;
     std::cout << "  " << RED << "||    ||" << GREEN << "     |||||  " << YELLOW << "     |||||   " << BLUE << "  ||||||||" << YELLOW << "    |||      " << GREEN << "      |||    " << RED << "  ||||||||" << RESET_COLOR << std::endl << std::endl;
-    std::cout << "+---------------------------- Welcome to the Acolyte! -----------------------------+" << std::endl;
+    std::cout << "+------------------------------- Welcome to Acolyte! ------------------------------+" << std::endl;
     std::cout << "|                                                                                  |" << std::endl;
-    std::cout << "|   Acolyte is the lightweight terminal file manager which let versatile options   |" << std::endl;
+    std::cout << "|   Acolyte is the lightweight terminal file manager which gives versatile options |" << std::endl;
     std::cout << "|   to control, manage, delete, and write files in Finder                          |" << std::endl;
     std::cout << "|                                                                                  |" << std::endl;
     std::cout << "+----------------------------------------------------------------------------------+" << std::endl << std::endl;
-    std::cout << "+-- Available options: ------------------------------------------------------------+" << std::endl;
-    std::cout << "| -help                              -- print Acolyte docs                         |" << std::endl;
-    std::cout << "| -version                           -- print current version                      |" << std::endl;
-    std::cout << "| -goto [directory]                  -- go to directory                            |" << std::endl;
-    std::cout << "| -make [filename] { directory }     -- create file in current directory           |" << std::endl;
-    std::cout << "| -remove [filename] { directory }   -- remove file from current directory         |" << std::endl;
-    std::cout << "| -show { directory }                -- show files in current directory            |" << std::endl;
-    std::cout << "| -history                           -- show full commands history                 |" << std::endl;
+    std::cout << "+-- Available commands: -----------------------------------------------------------+" << std::endl;
+    std::cout << "| - help                           -- display Acolyte docs                         |" << std::endl;
+    std::cout << "| - clear                          -- clear current session                        |" << std::endl;
+    std::cout << "| - exit                           -- quit Acolyte                                 |" << std::endl;
+    std::cout << "| - path                           -- display current working directory            |" << std::endl;
+    std::cout << "| - list                           -- display files/folders in current directory   |" << std::endl;
+    std::cout << "| - version                        -- display current version                      |" << std::endl;
+    std::cout << "| - go [directory]                 -- go to directory                              |" << std::endl;
+    std::cout << "| - make [filename.extension]      -- create file                                  |" << std::endl;
+    std::cout << "| - remove [filename]              -- remove file/folder                           |" << std::endl;
     std::cout << "+----------------------------------------------------------------------------------+" << std::endl;
     std::cout << std::endl;
 }
