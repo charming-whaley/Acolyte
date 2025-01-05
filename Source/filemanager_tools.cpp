@@ -1,13 +1,20 @@
 #include <iostream>
-#include "../Header files/documentation.h"
+#include <cstdlib>
+#include <vector>
+#include <string>
+#include "../Header files/filemanager_tools.h"
 
-void displayAcolyteDocumentation() {
-    const std::string RESET_COLOR = "\033[0m";
-    const std::string RED = "\033[31m";
-    const std::string GREEN = "\033[32m";
-    const std::string YELLOW = "\033[33m";
-    const std::string BLUE = "\033[34m";
-    
+void FilemanagerTools::displayLogo() {
+    std::cout << std::endl;
+    std::cout << "  " << RED << "    ||  " << GREEN << "     |||||  " << YELLOW << "     |||||   " << BLUE << "  |||     " << YELLOW << "  |||     |||" << GREEN << "  |||||||||||" << RED << "  ||||||||" << RESET_COLOR << std::endl;
+    std::cout << "  " << RED << "  || |||" << GREEN << "   ||||  |||" << YELLOW << "   |||   ||| " << BLUE << "  |||     " << YELLOW << "   |||   ||| " << GREEN << "      |||    " << RED << "  |||     " << RESET_COLOR << std::endl;
+    std::cout << "  " << RED << "|||  |||" << GREEN << "  |||       " << YELLOW << "  |||     |||" << BLUE << "  |||     " << YELLOW << "    ||| |||  " << GREEN << "      |||    " << RED << "  |||||   " << RESET_COLOR << std::endl;
+    std::cout << "  " << RED << "|||  |||" << GREEN << "  |||       " << YELLOW << "  |||     |||" << BLUE << "  |||     " << YELLOW << "     |||||   " << GREEN << "      |||    " << RED << "  |||||   " << RESET_COLOR << std::endl;
+    std::cout << "  " << RED << "||||||||" << GREEN << "   ||||  |||" << YELLOW << "   |||   ||| " << BLUE << "  |||     " << YELLOW << "     |||     " << GREEN << "      |||    " << RED << "  |||     " << RESET_COLOR << std::endl;
+    std::cout << "  " << RED << "||    ||" << GREEN << "     |||||  " << YELLOW << "     |||||   " << BLUE << "  ||||||||" << YELLOW << "    |||      " << GREEN << "      |||    " << RED << "  ||||||||" << RESET_COLOR << std::endl << std::endl;
+}
+
+void FilemanagerTools::displayDocumentation() {
     std::cout << std::endl;
     std::cout << "  " << RED << "    ||  " << GREEN << "     |||||  " << YELLOW << "     |||||   " << BLUE << "  |||     " << YELLOW << "  |||     |||" << GREEN << "  |||||||||||" << RED << "  ||||||||" << RESET_COLOR << std::endl;
     std::cout << "  " << RED << "  || |||" << GREEN << "   ||||  |||" << YELLOW << "   |||   ||| " << BLUE << "  |||     " << YELLOW << "   |||   ||| " << GREEN << "      |||    " << RED << "  |||     " << RESET_COLOR << std::endl;
@@ -26,7 +33,7 @@ void displayAcolyteDocumentation() {
     std::cout << "| - clear                          -- clear current session                        |" << std::endl;
     std::cout << "| - exit                           -- quit Acolyte                                 |" << std::endl;
     std::cout << "| - path                           -- display current working directory            |" << std::endl;
-    std::cout << "| - list                           -- display files/folders in current directory   |" << std::endl;
+    std::cout << "| - ls                           -- display files/folders in current directory     |" << std::endl;
     std::cout << "| - version                        -- display current version                      |" << std::endl;
     std::cout << "| - echo [message]                 -- display your message                         |" << std::endl;
     std::cout << "| - go [directory]                 -- go to directory                              |" << std::endl;
@@ -34,4 +41,22 @@ void displayAcolyteDocumentation() {
     std::cout << "| - remove [filename]              -- remove file/folder                           |" << std::endl;
     std::cout << "+----------------------------------------------------------------------------------+" << std::endl;
     std::cout << std::endl;
+}
+
+void FilemanagerTools::displayCurrentVersion() {
+    std::cout << "alpha v1.0.0" << std::endl;
+}
+
+void FilemanagerTools::clearCurrentSession() {
+    system("clear");
+}
+
+void FilemanagerTools::showCommandsHistory(std::vector<std::string> commands_stack) {
+    for (std::string &command: commands_stack)
+        std::cout << BLUE << command << "\n";
+    std::cout << RESET_COLOR;
+}
+
+void FilemanagerTools::echoMessage(const std::string& message) {
+    std::cout << message << std::endl;
 }

@@ -1,10 +1,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "tools.cpp"
-#include "directory_editing.cpp"
+#include "filemanager_tools.cpp"
+#include "filesystem_manager.cpp"
 #include "file_functionality.cpp"
-#include "documentation.cpp"
 
 int main(int argc, const char * argv[]) {
     const std::string RESET_COLOR = "\033[0m";
@@ -13,49 +12,52 @@ int main(int argc, const char * argv[]) {
     const std::string YELLOW = "\033[33m";
     const std::string BLUE = "\033[34m";
     
-    std::vector<std::string> commandStack;
+    FilesystemManager manager = FilesystemManager();
+    FilemanagerTools filemanager_tools = FilemanagerTools();
+
+    std::vector<std::string> commands_stack;
     
-    displayAcolyteLogo();
+    filemanager_tools.displayLogo();
     
     std::string userInput;
     while (userInput != "exit()" and userInput != "exit") {
         std::cout << "> ";
         std::getline(std::cin, userInput);
-        commandStack.push_back(userInput);
+        commands_stack.push_back(userInput);
 
         if (userInput == "help")
-            displayAcolyteDocumentation();
+            filemanager_tools.displayDocumentation();
         else if (userInput == "clear")
-            clearCurrentSession();
+            filemanager_tools.clearCurrentSession();
         else if (userInput == "version")
-            displayCurrentAcolyteVersion();
+            filemanager_tools.displayCurrentVersion();
         else if (userInput == "history")
-            showCommandsHistory(commandStack);
+            filemanager_tools.showCommandsHistory(commands_stack);
         else if (userInput == "path")
-            showCurrentWorkingDirectory();
-        else if (userInput == "list")
-            showAllFilesAndFoldersInPath();
+            manager.showCurrentWorkingDirectory();
+        else if (userInput == "ls")
+            manager.showPathContent();
         else if (userInput[0] == 'g' && userInput[1] == 'o') {
             std::string path;
             for (int i = 3; userInput[i] != '\0'; ++i)
                 path.push_back(userInput[i]);
-            goToSpecifiedPath(path);
+            manager.goToSpecifiedPath(path);
         } else if (userInput[0] == 'm' && userInput[1] == 'a' && userInput[2] == 'k' && userInput[3] == 'e') {
             std::string filename;
             for (int i = 5; userInput[i] != '\0'; ++i)
                 filename.push_back(userInput[i]);
-            makeFileInTheCurrentDirectory(filename);
+            manager.makeFileInCurrentWorkingDirectory(filename);
         } else if (userInput[0] == 'r' && userInput[1] == 'e' && userInput[2] == 'm' && userInput[3] == 'o' && userInput[4] == 'v' && userInput[5] == 'e') {
             std::string filename;
             for (int i = 7; userInput[i] != '\0'; ++i)
                 filename.push_back(userInput[i]);
-            removeFileFromCurrentDirectory(filename);
+            manager.removeFileFromCurrentWorkingDirectory(filename);
         } else if (userInput[0] == 'e' && userInput[1] == 'c' && userInput[2] == 'h' && userInput[3] == 'o') {
             std::string message;
             for (int i = 5; userInput[i] != '\0'; ++i)
                 message.push_back(userInput[i]);
-            echoMessageInTerminal(message);
-        } else if (userInput[0] == 'o' && userInput[0] == 'o' && userInput[0] == 'o' && userInput[0] == 'o') {
+            filemanager_tools.echoMessage(message);
+        } else if (userInput[0] == 'o' && userInput[1] == 'p' && userInput[2] == 'e' && userInput[3] == 'n') {
             std::string path;
             for (int i = 5; userInput[i] != '\0'; ++i)
                 path.push_back(userInput[i]);
