@@ -3,7 +3,7 @@
 #include <vector>
 #include "filemanager_tools.cpp"
 #include "filesystem_manager.cpp"
-#include "file_functionality.cpp"
+#include "terminal_functionality.cpp"
 
 int main(int argc, const char * argv[]) {
     const std::string RESET_COLOR = "\033[0m";
@@ -14,6 +14,7 @@ int main(int argc, const char * argv[]) {
     
     FilesystemManager manager = FilesystemManager();
     FilemanagerTools filemanager_tools = FilemanagerTools();
+    TerminalFunctionality terminalFunctionality = TerminalFunctionality();
 
     std::vector<std::string> commands_stack;
     
@@ -61,17 +62,17 @@ int main(int argc, const char * argv[]) {
             std::string path;
             for (int i = 5; userInput[i] != '\0'; ++i)
                 path.push_back(userInput[i]);
-            openSpecifiedDirectoryInFinder(path);
+            terminalFunctionality.openSpecifiedPathOrFileInFinder(path);
         } else if (userInput[0] == 'v' && userInput[1] == 'i' && userInput[2] == 'm') {
-            std::string path;
+            std::string filename;
             for (int i = 4; userInput[i] != '\0'; ++i)
-                path.push_back(userInput[i]);
-            openSpecifiedFileInVim(path);
+                filename.push_back(userInput[i]);
+            terminalFunctionality.openSpecifiedFileInVim(filename);
         } else if (userInput[0] == 'p' && userInput[1] == 'y' && userInput[2] == 't' && userInput[3] == 'h' && userInput[4] == 'o' && userInput[5] == 'n') {
-            std::string path;
+            std::string filename;
             for (int i = 7; userInput[i] != '\0'; ++i)
-                path.push_back(userInput[i]);
-            openSpecifiedFileInPython(path);
+                filename.push_back(userInput[i]);
+            terminalFunctionality.openSpecifiedFileInPython(filename);
         } else
             if (userInput != "exit()" and userInput != "exit")
                 std::cout << RED << "Error" << RESET_COLOR << ": no such command " << userInput << std::endl;
