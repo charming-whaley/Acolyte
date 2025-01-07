@@ -1,4 +1,7 @@
 #include <iostream>
+#include <unistd.h>
+#include <filesystem>
+#include <cstdlib>
 #include <string>
 #include <vector>
 #include "filemanager_tools.cpp"
@@ -11,6 +14,10 @@ int main(int argc, const char * argv[]) {
     const std::string GREEN = "\033[32m";
     const std::string YELLOW = "\033[33m";
     const std::string BLUE = "\033[34m";
+    const char* USERNAME = std::getenv("USER");
+
+    char hostname[256];
+    gethostname(hostname, sizeof(hostname));
     
     FilesystemManager manager = FilesystemManager();
     FilemanagerTools filemanager_tools = FilemanagerTools();
@@ -22,7 +29,7 @@ int main(int argc, const char * argv[]) {
     
     std::string userInput;
     while (userInput != "exit()" and userInput != "exit") {
-        std::cout << "> ";
+        std::cout << USERNAME << "@" << hostname << " " << std::filesystem::current_path().string() << " > ";
         std::getline(std::cin, userInput);
         commands_stack.push_back(userInput);
 
@@ -73,6 +80,11 @@ int main(int argc, const char * argv[]) {
             for (int i = 7; userInput[i] != '\0'; ++i)
                 filename.push_back(userInput[i]);
             terminalFunctionality.openSpecifiedFileInPython(filename);
+        } else if (userInput[0] == 's' && userInput[1] == 'u' && userInput[2] == 'd' && userInput[3] == 'o') {
+            std::string command;
+            for (int i = 5; userInput[i] != '\0'; ++i)
+                command.push_back(userInput[i]);
+            terminalFunctionality.retrieveRootInTerminal(command.empty() ? command : " " + command);
         } else
             if (userInput != "exit()" and userInput != "exit")
                 std::cout << RED << "Error" << RESET_COLOR << ": no such command " << userInput << std::endl;

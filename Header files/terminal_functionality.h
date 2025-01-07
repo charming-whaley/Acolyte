@@ -10,6 +10,7 @@ class TerminalFunctionality {
     void openSpecifiedPathOrFileInFinder(const std::string& path);
     void openSpecifiedFileInVim(const std::string& filename);
     void openSpecifiedFileInPython(const std::string& filename);
+    void retrieveRootInTerminal(const std::string& commands);
 };
 
 #endif

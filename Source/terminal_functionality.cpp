@@ -31,3 +31,8 @@ void TerminalFunctionality::openSpecifiedFileInPython(const std::string& filenam
     else
         std::cout << RED << "Error: " << RESET_COLOR << "couldn't open file in Python!" << std::endl;
 }
+
+void TerminalFunctionality::retrieveRootInTerminal(const std::string& commands) {
+    std::string script = "sudo" + commands;
+    int result = system(script.c_str());
+}
