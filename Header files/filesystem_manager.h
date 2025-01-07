@@ -13,6 +13,7 @@ class FilesystemManager {
     const std::string RED = "\033[31m";
     const std::string BLUE = "\033[34m";
     const std::string GREEN = "\033[32m";
+    int retrieveTerminalSize();
 };
 
 #endif
