@@ -4,7 +4,7 @@ Acolyte is the lightweight terminal file manager. Written in C++, it provides be
 
 ## Installation
 
-Just download .zip archive from GitHup and run ./filemanager in terminal:
+Just download .zip archive from GitHup and run ./acolyte in terminal:
 
 ```
 ./acolyte
@@ -12,10 +12,10 @@ Just download .zip archive from GitHup and run ./filemanager in terminal:
 
 ## Usage
 
-For better performance, run help in Acolyte terminal to get Acolyte docs:
+For better understanding of functionality, run help in Acolyte's terminal window to get its docs:
 
 ```
 > help
 ```
 
-![Screenshot 2025-01-04 at 5 46 26 PM](https://github.com/user-attachments/assets/e865ee15-adfe-4b5f-9adb-be4a4fe4e0ef)
+<img width="843" alt="Screenshot 2025-01-07 at 5 11 51 PM" src="https://github.com/user-attachments/assets/73dd8c26-53b7-4a5f-a64f-b8526ab3bf31" />
