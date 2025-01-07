@@ -3,6 +3,7 @@
 #include <filesystem>
 #include <cstdlib>
 #include <string>
+#include <cstring>
 #include <vector>
 #include "filemanager_tools.cpp"
 #include "filesystem_manager.cpp"
@@ -16,8 +17,18 @@ int main(int argc, const char * argv[]) {
     const std::string BLUE = "\033[34m";
     const char* USERNAME = std::getenv("USER");
 
+    std::filesystem::current_path("/Users/katkov");
+
     char hostname[256];
-    gethostname(hostname, sizeof(hostname));
+    if (gethostname(hostname, sizeof(hostname)) == 0) {
+        const char* suffix = ".local";
+        size_t hostnameLength = strlen(hostname);
+        size_t suffixLength = strlen(suffix);
+
+        if (hostnameLength > suffixLength && strcmp(hostname + hostnameLength - suffixLength, suffix) == 0) {
+            hostname[hostnameLength - suffixLength] = '\0';
+        }
+    }
     
     FilesystemManager manager = FilesystemManager();
     FilemanagerTools filemanager_tools = FilemanagerTools();
@@ -29,7 +40,7 @@ int main(int argc, const char * argv[]) {
     
     std::string userInput;
     while (userInput != "exit()" and userInput != "exit") {
-        std::cout << USERNAME << "@" << hostname << " " << std::filesystem::current_path().string() << " > ";
+        std::cout << GREEN << USERNAME << BLUE << "@" << GREEN << hostname << RESET_COLOR << " " << std::filesystem::current_path().string() << " > ";
         std::getline(std::cin, userInput);
         commands_stack.push_back(userInput);
 
