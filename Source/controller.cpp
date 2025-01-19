@@ -25,8 +25,46 @@ public:
             std::cout << RED << "An error occurred when changing directory: " << RESET_COLOR << error.what() << std::endl;
         }
     }
-    static void displayCurrentWorkingDirectory();
+    static void displayCurrentWorkingDirectory() {
+        try {
+            std::cout << std::filesystem::current_path() << std::endl;
+        } catch (const std::exception& error) {
+            std::cout << RED << "An error occurred when getting directory: " << RESET_COLOR << error.what() << std::endl;
+        }
+    }
     static void showPathContent();
-    static void createFileInCurrentWorkingDirectory(const std::string& filename);
-    static void removeFileFromCurrentWorkingDirectory(const std::string& filename);
+    static void createFileInCurrentWorkingDirectory(const std::string& filename) {
+        const std::filesystem::path PATH = std::filesystem::current_path() / filename;
+        std::ofstream file(PATH);
+
+        try {
+            if (file.is_open()) {
+                file << "";
+                file.close();
+                std::cout << GREEN << "Success!" << RESET_COLOR << std::endl;
+            } else
+                std::cout << RED << "Error: " << RESET_COLOR << "not possible to create " << filename << std::endl;
+        } catch (const std::exception& error) {
+            std::cout << RED << "An error occurred when creating file: " << RESET_COLOR << error.what() << std::endl;
+        }
+    }
+    static void removeFileFromCurrentWorkingDirectory(const std::string& filename) {
+        const std::filesystem::path PATH = std::filesystem::current_path() / filename;
+
+        try {
+            if (std::filesystem::exists(PATH) && std::filesystem::is_regular_file(PATH)) {
+                std::filesystem::remove(PATH);
+                std::cout << GREEN << "Success!" << RESET_COLOR << std::endl;
+            } else
+                std::cout << RED << "Error:" << RESET_COLOR << " unable to remove" << filename << " from " << PATH.string() << std::endl;
+        } catch (const std::exception& error) {
+            std::cout << RED << "An error occurred when removing file: " << RESET_COLOR << error.what() << std::endl;
+        }
+    }
+private:
+    static int retrieveTerminalSize() {
+        struct winsize win {};
+        ioctl(STDOUT_FILENO, TIOCGWINSZ, &win);
+        return win.ws_col;
+    }
 };
