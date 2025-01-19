@@ -34,7 +34,7 @@ int main() {
     Tools::displayProductLogo();
     std::string input;
     while (true) {
-        std::cout << GREEN << USERNAME << CYAN << "@" << GREEN << hostname << RESET_COLOR << " >" << std::endl;
+        std::cout << GREEN << USERNAME << CYAN << "@" << GREEN << hostname << RESET_COLOR << " > ";
         std::getline(std::cin, input);
         commandsHistory.push_back(input);
 

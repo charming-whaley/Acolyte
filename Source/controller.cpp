@@ -38,37 +38,34 @@ public:
         try {
             if (std::filesystem::exists(PATH) && std::filesystem::is_directory(PATH)) {
                 std::vector<std::string> directoryContent;
-                for (const auto& entry : std::filesystem::directory_iterator(PATH))
+                for (const auto& entry: std::filesystem::directory_iterator(PATH))
                     directoryContent.push_back(entry.path().filename().string());
-                if (directoryContent.empty())
-                    std::cout << YELLOW << "Directory is empty!" << RESET_COLOR << std::endl;
+                if (directoryContent.empty()) return;
 
-                const int terminalSize = retrieveTerminalSize();
-
+                int terminalSize = retrieveTerminalSize();
                 size_t maxLength = 0;
-                for (const auto& fileNameSize : directoryContent)
-                    maxLength = std::max(maxLength, fileNameSize.size());
+                for (const auto& filenameSize: directoryContent)
+                    maxLength = std::max(maxLength, filenameSize.size());
 
                 int columns = terminalSize / (maxLength + 2);
-                if (columns == 0)
-                    columns = 1;
+                if (columns == 0) columns = 1;
 
                 int rows = (directoryContent.size() + columns - 1) / columns;
                 for (int row = 0; row < rows; ++row) {
                     for (int column = 0; column < columns; ++column) {
-                        const int index = row * (1 + column);
+                        int index = row * (1 + column);
                         if (index < directoryContent.size()) {
                             std::cout << CYAN << directoryContent[index] << RESET_COLOR;
-                            const int paddingBetweenNames = maxLength - directoryContent[index].size() + 2;
+                            int paddingBetweenNames = maxLength - directoryContent[index].size() + 2;
                             std::cout << std::string(paddingBetweenNames, ' ');
                         }
                     }
                     std::cout << std::endl;
                 }
             } else
-                std::cout << RED << "Error: " << RESET_COLOR << "could not load files!" << std::endl;
-        } catch (const std::exception& error) {
-            std::cout << RED << "An error occurred when loading files: " << RESET_COLOR << error.what() << std::endl;
+                std::cout << RED << "Error: " << RESET_COLOR << "not possible to show files!" << std::endl;
+        } catch (const std::exception& e) {
+            std::cout << RED << "An error occured when loading files: " << RESET_COLOR << e.what() << std::endl;
         }
     }
     static void createFileInCurrentWorkingDirectory(const std::string& filename) {
@@ -101,7 +98,7 @@ public:
     }
 private:
     static int retrieveTerminalSize() {
-        struct winsize win {};
+        struct winsize win;
         ioctl(STDOUT_FILENO, TIOCGWINSZ, &win);
         return win.ws_col;
     }
