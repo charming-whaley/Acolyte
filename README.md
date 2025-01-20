@@ -1,12 +1,12 @@
-# Acolyte 💫
+# 💫 Acolyte
 
 <p>Acolyte is the lightweight open-source CLI tool written in C++ for macOS terminal</p>
 
-# Description 🗞️
+# 🗞️ Description
 
 <p>Acolyte provides a variety of options to get around when launching it. You can make, remove files, open in Python, or even go to specified directory</p>
 
-# Usage 💻
+# 💻 Usage
 
 <p>When downloading source files, just go to Source directory and run ./acolyte command to start dealing with Acolyte</p>
 
